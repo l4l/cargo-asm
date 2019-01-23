@@ -69,6 +69,14 @@ pub fn project() -> Vec<::std::path::PathBuf> {
         cargo_build.arg("--lib");
     }
 
+    if opts.benches() {
+        cargo_build.arg("--benches");
+    }
+
+    if opts.tests() {
+        cargo_build.arg("--tests");
+    }
+
     if let Some(triple) = opts.TRIPLE() {
         cargo_build.arg(&format!("--target={}", triple));
     }
